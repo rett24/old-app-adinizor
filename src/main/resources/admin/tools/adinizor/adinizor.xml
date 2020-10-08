@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<tool xmlns="urn:enonic:xp:model:1.0">
+  <display-name>Hello React</display-name>
+  <description>Super simple example</description>
+  <allow>
+    <principal>role:system.admin</principal>
+    <principal>role:system.admin</principal>
+  </allow>
+</tool>
+

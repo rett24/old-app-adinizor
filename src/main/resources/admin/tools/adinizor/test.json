@@ -1,0 +1,39 @@
+{
+  "method": "GET",
+  "scheme": "http",
+  "host": "localhost",
+  "port": 8080,
+  "path": "/admin/tool/no.rett24.app.adinizor/adinizor",
+  "rawPath": "/admin/tool/no.rett24.app.adinizor/adinizor",
+  "url": "http://localhost:8080/admin/tool/no.rett24.app.adinizor/adinizor",
+  "remoteAddress": "127.0.0.1",
+  "mode": "admin",
+  "webSocket": false,
+  "repositoryId": "com.enonic.cms.default",
+  "branch": "draft",
+  "contextPath": "/admin/tool/no.rett24.app.adinizor/adinizor",
+  "params": {},
+  "headers": {
+    "Cookie": "enonic_xp_tour=tour; _ga=GA1.1.1648555707.1578302969; _gid=GA1.1.1901897914.1601840576; app.browse.RecentItemsList=portal%3Asite%7Cno.rett24.web%3Abanner-responsive%7Cno.rett24.web%3Aarticle; JSESSIONID=29e8e683-3572-4526-bdf8-b83e4d9d753f1lxxfdy9j4cpax5yhxlm06pd63.29e8e683-3572-4526-bdf8-b83e4d9d753f",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+    "Connection": "keep-alive",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",
+    "Referer": "http://localhost:8080/admin/tool/com.enonic.xp.app.applications/main",
+    "Sec-Fetch-Site": "same-origin",
+    "Sec-Fetch-Dest": "document",
+    "Host": "localhost:8080",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Sec-Fetch-Mode": "navigate",
+    "Cache-Control": "max-age=0",
+    "Upgrade-Insecure-Requests": "1",
+    "Sec-Fetch-User": "?1",
+    "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8,no;q=0.7"
+  },
+  "cookies": {
+    "enonic_xp_tour": "tour",
+    "_ga": "GA1.1.1648555707.1578302969",
+    "app.browse.RecentItemsList": "portal%3Asite%7Cno.rett24.web%3Abanner-responsive%7Cno.rett24.web%3Aarticle",
+    "JSESSIONID": "29e8e683-3572-4526-bdf8-b83e4d9d753f1lxxfdy9j4cpax5yhxlm06pd63.29e8e683-3572-4526-bdf8-b83e4d9d753f",
+    "_gid": "GA1.1.1901897914.1601840576"
+  }
+}
