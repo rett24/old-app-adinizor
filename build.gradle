@@ -33,6 +33,11 @@ dependencies {
     include "com.enonic.lib:lib-mustache:2.0.0"
     include "com.enonic.lib:lib-util:2.3.0"
     include "com.enonic.lib:lib-guillotine:4.2.0"
+    webjar "org.webjars:momentjs:2.24.0"
+    include 'com.enonic.lib:lib-cache:1.1.0'
+    include 'com.enonic.lib:lib-http-client:2.1.2'
+    // JOBS
+    //include "no.rett24.lib:lib-jobs:1.0.0-SNAPSHOT"
 
     include "com.enonic.lib:lib-react4xp:${rootProject.ext.LIB_REACT4XP_VERSION}"
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<part>
+  <display-name>Expired Ads List</display-name>
+  <form>
+    <input name="adsFolder" type="ContentSelector">
+      <label>Folder</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <allow-content-type>base:folder</allow-content-type>
+      </config>
+    </input>
+    <input name="sortBy" type="TextLine">
+      <label>SortBy</label>
+      <default>data.jobDueDate</default>
+    </input>
+    <input  name="descending" type="CheckBox">
+      <label>Descending</label>
+      <default>checked</default>
+      <config>
+        <alignment>right</alignment>
+      </config>
+    </input>
+  </form>
+</part>

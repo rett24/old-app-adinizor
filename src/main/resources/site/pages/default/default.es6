@@ -3,7 +3,7 @@
 const portal = require('/lib/xp/portal');
 const React4xp = require('/lib/enonic/react4xp');
 
-exports.get = function(request) {
+exports.get = function (request) {
     const content = portal.getContent();
     const entry = portal.getComponent();
 
@@ -26,6 +26,8 @@ exports.get = function(request) {
                     <head>
                         <meta charset="UTF-8" />
                         <title>${content.displayName}</title>
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+                        <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     </head>
                     <body class="xp-page">
                         <div id="${id}"></div>

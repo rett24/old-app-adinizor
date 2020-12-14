@@ -1,5 +1,9 @@
 const guillotineLib = require('/lib/guillotine');
 const graphQlLib = require('/lib/graphql');
+const utilLib = require('/lib/guillotine/util/util');
+const contentLib = require('/lib/xp/content');
+const portalLib = require('/lib/xp/portal');
+const contextLib = require('/lib/xp/context');
 
 const CORS_HEADERS = {
     'Access-Control-Allow-Headers': 'Content-Type',
@@ -7,16 +11,10 @@ const CORS_HEADERS = {
     // 'Access-Control-Allow-Origin': '*'
 };
 
-const SCHEMA = guillotineLib.createSchema();
+const SCHEMA = createSchemas();
 
 // ----------------------------------------------  FOR USE IN CONTROLLERS:    ------------------------------------
-
 exports.executeQuery = (query, variables) => graphQlLib.execute(SCHEMA, query, variables);
-
-
-
-
-
 
 // ----------------------------------------------  FRONTEND EXPOSED METHODS:  ------------------------------------
 
@@ -37,6 +35,30 @@ exports.executeQuery = (query, variables) => graphQlLib.execute(SCHEMA, query, v
  * @param req req.body must be a JSON-string, parseable to an object with parameters: body and variables.
  * These will be run through the guillotine engine and JSON data will be returned.
  */
+
+function createSchema() {
+    var context = guillotineLib.createContext();
+    return graphQlLib.createSchema({
+        query: createRootQueryType(context),
+        dictionary: context.dictionary
+    });
+}
+
+function createRootQueryType(context) {
+    return graphQlLib.createObjectType({
+        name: 'Query',
+        fields: {
+            guillotine: {
+                type: guillotineLib.createHeadlessCmsType(context),
+            resolve: function () {
+                return {};
+            }
+        }
+    }
+});
+}
+
+
 exports.post = req => {
     var body = JSON.parse(req.body);
 
@@ -49,10 +71,10 @@ exports.post = req => {
     let status = 200;
     if (output.body.errors) {
         status = 400;
-        log.error(`${output.body.errors.length} guillotine error${output.body.errors.length === 1 ? "" : "s"}: ${JSON.stringify(output.body.errors)}`);
+        log.error(`${output.body.errors.length} guillotine error${output.body.errors.length === 1 ? "" : "s"}: ${JSON.stringify(
+            output.body.errors)}`);
         log.error(JSON.stringify(output.body.errors, null, 4));
         log.info("The error happened with these request.body.variables: " + JSON.stringify(body.variables));
-
     }
 
     return {

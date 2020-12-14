@@ -29,11 +29,14 @@ const checkParams = params => {
         throw Error('Missing or invalid params argument. Supply a valid object: doGuillotineRequest(params);');
     }
 
-    Object.keys(params).forEach( key => {
+    Object.keys(params).forEach(key => {
         if (params[key] && typeof params[key] !== PARAM_TYPES[key]) {
-            throw Error(`Invalid parameter type. Supply a valid '${key}' ${PARAM_TYPES[key]} parameter: doGuillotineRequest({${key}: <${PARAM_TYPES[key]}>, etc});`);
+            throw Error(
+                `Invalid parameter type. Supply a valid '${key}' ${PARAM_TYPES[key]} parameter: doGuillotineRequest({${key}: <${PARAM_TYPES[key]}>, etc});`);
         }
     })
+
+    log.info("#################### GUILIOTINE REQUEST: " + params.url);
 
     if ((params.url || '').trim() === '') {
         throw Error("Missing URL to the guillotine API. Supply a valid 'url' string parameter: doGuillotineRequest({url: '...', etc}); ");
@@ -42,7 +45,6 @@ const checkParams = params => {
         throw Error("Missing guillotine query. Supply a valid 'query' string parameter: doGuillotineRequest({query: '...', etc}); ");
     }
 };
-
 
 const extractParamsOrDefaults = params => {
     checkParams(params);
@@ -54,14 +56,18 @@ const extractParamsOrDefaults = params => {
         handleResponseErrorFunc: params.handleResponseErrorFunc || (
             response => {
                 if (!(response.status < 300)) {
-                    throw Error(`Guillotine API response:\n\n${response.status} - ${response.statusText}.\n\nAPI url: ${response.url}\n\nInspect the request and/or the server log.`);
+                    throw Error(
+                        `Guillotine API response:\n\n${response.status} - ${response.statusText}.\n\nAPI url: ${response.url}\n\nInspect the request and/or the server log.`);
                 }
                 return response;
             }
         ),
-        extractDataFunc: params.extractDataFunc || ( responseData => responseData ),
-        handleDataFunc: params.handleDataFunc || function(){},
-        catchErrorsFunc: params.catchErrorsFunc || ( error => {console.error(error);} )
+        extractDataFunc: params.extractDataFunc || (responseData => responseData),
+        handleDataFunc: params.handleDataFunc || function () {
+        },
+        catchErrorsFunc: params.catchErrorsFunc || (error => {
+            console.error(error);
+        })
     }
 }
 
@@ -69,15 +75,17 @@ const extractParamsOrDefaults = params => {
 
 const doGuillotineRequest = (params) => {
 
-    const {url, query, variables, handleResponseErrorFunc, extractDataFunc, handleDataFunc, catchErrorsFunc } = extractParamsOrDefaults(params);
+    const {url, query, variables, handleResponseErrorFunc, extractDataFunc, handleDataFunc, catchErrorsFunc} = extractParamsOrDefaults(
+        params);
 
     fetch(
         url,
         {
             method: "POST",
             body: JSON.stringify({
-                query,
-                variables}
+                    query,
+                    variables
+                }
             ),
             credentials: "same-origin",
         }
